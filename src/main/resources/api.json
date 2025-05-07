@@ -1,0 +1,87 @@
+{
+    "info": {
+      "name": "Customer API",
+      "description": "Postman Collection for  API",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Register User",
+        "request": {
+          "method": "POST",
+          "header": [
+            {"key": "Content-Type", "value": "application/json"}
+          ],
+          "url": {"raw": "http://localhost:8081/register", "host": ["localhost"], "port": "8081", "path": ["register"]},
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"password123\"\n}"
+          }
+        }
+      },
+      {
+        "name": "Login User",
+        "request": {
+          "method": "POST",
+          "header": [
+            {"key": "Content-Type", "value": "application/json"}
+          ],
+          "url": {"raw": "http://localhost:8081/login", "host": ["localhost"], "port": "8081", "path": ["login"]},
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"password123\"\n}"
+          }
+        }
+      },
+      {
+        "name": "Create Message",
+        "request": {
+          "method": "POST",
+          "header": [
+            {"key": "Content-Type", "value": "application/json"}
+          ],
+          "url": {"raw": "http://localhost:8081/messages", "host": ["localhost"], "port": "8081", "path": ["messages"]},
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"postedBy\": 1,\n  \"messageText\": \"Hello world!\",\n  \"timePostedEpoch\": 1715000000\n}"
+          }
+        }
+      },
+      {
+        "name": "Get All Messages",
+        "request": {
+          "method": "GET",
+          "url": {"raw": "http://localhost:8081/messages", "host": ["localhost"], "port": "8081", "path": ["messages"]}
+        }
+      },
+      {
+        "name": "Get Messages by User",
+        "request": {
+          "method": "GET",
+          "url": {"raw": "http://localhost:8081/messages/1", "host": ["localhost"], "port": "8081", "path": ["messages", "1"]}
+        }
+      },
+      {
+        "name": "Update Message",
+        "request": {
+          "method": "PUT",
+          "header": [
+            {"key": "Content-Type", "value": "application/json"}
+          ],
+          "url": {"raw": "http://localhost:8081/messages/1", "host": ["localhost"], "port": "8081", "path": ["messages", "1"]},
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"messageText\": \"Updated message!\"\n}"
+          }
+        }
+      },
+      {
+        "name": "Delete Message",
+        "request": {
+          "method": "DELETE",
+          "url": {"raw": "http://localhost:8081/messages/1", "host": ["localhost"], "port": "8081", "path": ["messages", "1"]}
+        }
+      }
+    ]
+  }
+  
