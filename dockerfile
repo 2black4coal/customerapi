@@ -1,15 +1,12 @@
-# 1. Use an official Java runtime as a parent image
-FROM eclipse-temurin:21-jdk-alpine
-
-# 2. Set the working directory inside the container
+# First stage: Build the JAR
+FROM eclipse-temurin:21-jdk-alpine AS builder
 WORKDIR /app
+COPY . .
+RUN mvn clean package
 
-# Copy the built jar file to the container
-COPY target/customerapi-0.0.1-SNAPSHOT.jar /app/customerapi.jar
-
-# Define the command to run the application
-CMD ["java", "-jar", "/app/customerapi.jar"]
-
-# 4. Expose the port (your app uses 8088)
-
+# Second stage: Use the built JAR
+FROM eclipse-temurin:21-jdk-alpine
+WORKDIR /app
+COPY --from=builder /app/target/customerapi-0.0.1-SNAPSHOT.jar /app/customerapi.jar
 EXPOSE 8085
+CMD ["java", "-jar", "/app/customerapi.jar"]
